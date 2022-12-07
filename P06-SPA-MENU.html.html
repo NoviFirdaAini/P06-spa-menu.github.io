@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPA MENU</title>
+    <script type="text/javascript">
+        $(document).ready(function() {
+    $("nav ul li a").click(function(){
+        $(".isi").slideToggle("slow");
+
+    $('nav ul li.tidak-aktif').each(function(index, el) {
+        var isiID = el.id.split('-')[1];
+        $('.isi#' + isiID).hide();
+    });
+});
+
+$('nav').delegate('.tidak-aktif', 'click', function(event) {
+    var pilihIsi = this.id.split('-')[1];
+    console.log(pilihIsi);
+    document.location.hash = pilihIsi;
+
+    $('.isi:visible').fadeOut('slow', function() {
+        $('.isi#' + pilihIsi).fadeIn('slow');
+    });
+
+    var $this = $(this);
+    $this.removeClass('tidak-aktif').addClass("aktif");
+    $this.siblings().addClass('tidak-aktif').removeClass('aktif');
+
+    });
+});
+    </script>
+</head>
+<body>
+    <nav class="navigasi">
+        <div class="wadah-navigasi">
+            <span class="logo"><a href="#">Novi Firda Aini</a></span>
+            <ul>
+                <li class="aktif" id="nav-isi1"><a href="#">HOME</a></li>
+                <li class="tidak-aktif" id="nav-isi2"><a href="#">About</a></li>
+                <li class="tidak-aktif" id="nav-isi3"><a href="#">Tentang</a></li>
+                <li class="tidak-aktif" id="nav-isi4"><a href="#">Kontak</a></li>
+            </ul>
+        </div>
+    </nav>
+    <br><br><br>
+
+    <div class="isi" id="isi1">
+       <div class="banner-left">
+                    <img src="foto.jpg">
+                    <h2>Nama :Novi Firda Aini<br>
+                        </h2>
+                        <h2>NIM : 41226196</h2>
+                    <p>halo, perkenalkan nama saya Novi Firda Aini dari kelas TI-KIP-C2 saya mahasiswa aktif di STIMIK IKMI CIREBON ini mengambil jurusan Teknik Informatika dan sekarang saya sedang menempuh Semester 3 </p>
+                </div>
+    </div>
+    <div class="isi" id="isi2">
+        <p> Ada yg bisa saya bantu?</p>    
+    </div>
+    <div class="isi" id="isi3">
+        <p>
+            Saya merupakan anak ke 1 dari 2 bersaudara, saya lahir di Majalengka pada tanggal 05 november 2002
+        </p>
+        <p> </p>
+        <p>Pendidikan Saya :</p>
+        <p>SD = SDN 1 Klayan - Kabupaten Cirebon</p>
+         <p>SMP = SMPN 15 Kota Cirebon</p>
+          <p>SMA = SMkN 1 Kedawung</p>
+          <p>Kuliah = STMIK IKMI Kota Cirebon</p>
+    </div>
+    <div class="isi" id="isi4">
+        <p>Contact Person :</p>
+        <p>No.Hp = 085624822367</p>
+        <p>Instagram = @vnpyii</p>
+        <p>Email = novifirda75@gmail.com</p>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
+<style>
+    *{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: 'Open Sans', sans-serif;
+    background-color: #A66999;
+}
+
+img{
+    width: 4cm;
+        padding: 5px;
+        border-radius: 10%;
+        box-shadow: 2px 2px 4px black;
+        margin: 15px;
+        transition: 0.2s;
+        opacity: 100%;
+    }
+    img:hover{
+        transform: scale(1.1);
+        box-shadow: 2px 2px 6px red;
+    }
+}
+
+.wadah-navigasi{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.navigasi{
+    position: fixed;
+    font-family: 'Poppins', sans-serif;
+    background-color: #DEA6CF;
+    top: 0;
+    left: 0;
+    right: 0;
+    transition: all 0.3s ease-in-out;
+    box-shadow:2px 2px 12px rgba(0,0,0,0.2);
+    z-index: 99;
+}
+
+.navigasi .wadah-navigasi{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.navigasi ul{
+    display: flex;
+    list-style-type: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.navigasi a{
+    color: black;
+    text-decoration: none;
+    padding: 7px 15px;
+    transition: all 0.3s ease-in-out;
+}
+
+.navigasi a:hover{
+    color: black;
+}
+
+.logo{
+    color: black;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.navigasi .aktif{
+    font-weight: bold;
+}
+
+.isi{
+    padding: 20px;
+    display: none;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    margin-left: 10px;
+    text-align: justify;
+}
+
+</style>
